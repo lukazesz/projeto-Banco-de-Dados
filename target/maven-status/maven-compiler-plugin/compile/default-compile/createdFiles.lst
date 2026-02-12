@@ -1,0 +1,10 @@
+bd\dao\JogosDAO.class
+bd\dao\UsuarioDAO.class
+bd\model\Usuario.class
+bd\model\Jogos.class
+bd\dto\JogosDTO.class
+bd\servlet\EditarJogosServlet.class
+bd\servlet\ListarJogosServlet.class
+bd\servlet\ExcluirJogoServlet.class
+bd\servlet\CadastrarJogoServlet.class
+bd\util\ConnectionFactory.class

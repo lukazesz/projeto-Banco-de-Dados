@@ -1,0 +1,10 @@
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\dao\JogosDAO.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\dao\UsuarioDAO.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\dto\JogosDTO.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\model\Jogos.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\model\Usuario.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\servlet\CadastrarJogoServlet.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\servlet\EditarJogosServlet.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\servlet\ExcluirJogoServlet.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\servlet\ListarJogosServlet.java
+c:\Users\lucas\Área de Trabalho\projeto_BD\projeto-Banco-de-Dados\projeto_BD_Erick\template-webapp-bd\app-web\src\main\java\bd\util\ConnectionFactory.java
