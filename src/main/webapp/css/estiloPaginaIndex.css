@@ -1,17 +1,96 @@
-body { font-family: sans-serif; max-width: 500px; margin: 20px auto; padding: 20px; }
-label { display: block; margin-bottom: 5px; }
-input[type="text"], input[type="email"] { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
-input[type="submit"] { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+/* ============================= */
+/* ESTRUTURA GLOBAL              */
+/* ============================= */
 
-.estiloBotaoLink:link, estiloBotaoLink:visited {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+html, body {
+    height: 100%;
 }
 
-.estiloBotaoLink:hover, estiloBotaoLink:active {
-    background-color: green;
+body {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #0b1220, #060b16);
+}
+
+main {
+    flex: 1;
+}
+
+/* ============================= */
+/* NAVBAR                        */
+/* ============================= */
+
+.custom-navbar {
+    background: linear-gradient(to bottom, #0b1220, #060b16);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-text {
+    color: white;
+    font-size: 36px;
+}
+
+/* ============================= */
+/* CARROSSEL                     */
+/* ============================= */
+
+.carousel-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.carousel-item img {
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* ============================= */
+/* BOTÕES                        */
+/* ============================= */
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* ============================= */
+/* FOOTER                        */
+/* ============================= */
+
+.footer-dark {
+    background: linear-gradient(to bottom, #0b1220, #060b16);
+    color: #9ca3af;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-dark .link-custom {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.footer-dark .link-custom:hover {
+    text-decoration: underline;
+}
+
+.footer-col {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+    .carousel-wrapper {
+        max-width: 90%;
+    }
+
+    .carousel-item img {
+        height: 250px;
+    }
+
+    .footer-col {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
 }
