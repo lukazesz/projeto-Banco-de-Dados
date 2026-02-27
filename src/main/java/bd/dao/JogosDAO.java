@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bd.dto.JogosDTO;
+import bd.dto.JogosAnoDTO;
 import bd.model.Jogos;
 import bd.util.ConnectionFactory;
 
@@ -65,6 +66,90 @@ public class JogosDAO {
                         rs.getString("nome_jogo"),
                         rs.getObject("data_compra", LocalDate.class),
                         rs.getString("nome_usuario")));
+            }
+        }
+
+        return lista;
+    }
+
+    // INNER JOIN + WHERE (por usuário)
+    public List<JogosDTO> listarPorUsuario(String nomeUsuario) throws Exception {
+
+        List<JogosDTO> lista = new ArrayList<>();
+
+        String sql = "SELECT j.id, j.nome AS nome_jogo, j.data_compra, u.nome AS nome_usuario " +
+                     "FROM jogos j " +
+                     "INNER JOIN usuario u ON j.id_usuario = u.id " +
+                     "WHERE u.nome = ?";
+
+        try (Connection c = ConnectionFactory.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, nomeUsuario);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                lista.add(new JogosDTO(
+                        rs.getInt("id"),
+                        rs.getString("nome_jogo"),
+                        rs.getObject("data_compra", LocalDate.class),
+                        rs.getString("nome_usuario")
+                ));
+            }
+        }
+
+        return lista;
+    }
+
+    // INNER JOIN + WHERE (por data)
+    public List<JogosDTO> listarAposData(LocalDate data) throws Exception {
+
+        List<JogosDTO> lista = new ArrayList<>();
+
+        String sql = "SELECT j.id, j.nome AS nome_jogo, j.data_compra, u.nome AS nome_usuario " +
+                     "FROM jogos j " +
+                     "INNER JOIN usuario u ON j.id_usuario = u.id " +
+                     "WHERE j.data_compra > ?";
+
+        try (Connection c = ConnectionFactory.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setDate(1, Date.valueOf(data));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                lista.add(new JogosDTO(
+                        rs.getInt("id"),
+                        rs.getString("nome_jogo"),
+                        rs.getObject("data_compra", LocalDate.class),
+                        rs.getString("nome_usuario")
+                ));
+            }
+        }
+
+        return lista;
+    }
+
+    // GROUP BY + ORDER BY (jogos por ano)
+    public List<JogosAnoDTO> listarJogosPorAno() throws Exception {
+
+        List<JogosAnoDTO> lista = new ArrayList<>();
+
+        String sql = "SELECT EXTRACT(YEAR FROM data_compra) AS ano, " +
+                     "COUNT(id) AS total_jogos " +
+                     "FROM jogos " +
+                     "GROUP BY ano " +
+                     "ORDER BY ano DESC";
+
+        try (Connection c = ConnectionFactory.getConnection();
+             Statement st = c.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+
+            while (rs.next()) {
+                lista.add(new JogosAnoDTO(
+                        rs.getInt("ano"),
+                        rs.getInt("total_jogos")
+                ));
             }
         }
 
