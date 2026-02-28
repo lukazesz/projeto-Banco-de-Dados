@@ -1,12 +1,14 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*,bd.model.Jogos" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="bd.dto.JogosDTO" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de Jogos</title>
+    <title>Jogos por Usuário</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +39,7 @@
 
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="text-light fw-bold mb-0">
-                    <i class="bi bi-controller"></i> Listagem de Jogos
+                    <i class="bi bi-people"></i> Jogos por Usuário
                 </h2>
 
                 <a href="/app-web" class="btn btn-custom-theme">
@@ -45,7 +47,6 @@
                 </a>
             </div>
 
-            <!-- TABELA -->
             <div class="table-responsive">
                 <table class="table table-dark table-striped table-hover align-middle text-center shadow">
 
@@ -54,37 +55,34 @@
                             <th>ID</th>
                             <th>Nome do Jogo</th>
                             <th>Data da Compra</th>
-                            <th>ID do Usuário</th>
-                            <th>Ações</th>
+                            <th>Usuário</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% 
-                           List<Jogos> jogos = (List<Jogos>) request.getAttribute("jogos");
-                           if(jogos != null){
-                               for(Jogos jogo : jogos) { 
+                        <%
+                        List<JogosDTO> lista = (List<JogosDTO>) request.getAttribute("lista");
+
+                        if(lista != null && !lista.isEmpty()){
+                            for(JogosDTO j : lista){
                         %>
                             <tr>
-                                <td><%= jogo.getId() %></td>
-                                <td><%= jogo.getNome() %></td>
-                                <td><%= jogo.getDataCompra() %></td>
-                                <td><%= jogo.getIdUsuario() %></td>
-                                <td>
-                                    <a href="editar?id=<%=jogo.getId()%>" 
-                                       class="btn btn-sm btn-warning">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-
-                                    <a href="excluirJogo?id=<%=jogo.getId()%>" 
-                                       class="btn btn-sm btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
+                                <td><%= j.getId() %></td>
+                                <td><%= j.getNomeJogo() %></td>
+                                <td><%= j.getDataCompra() %></td>
+                                <td><%= j.getNomeUsuario() %></td>
+                            </tr>
+                        <%
+                            }
+                        } else {
+                        %>
+                            <tr>
+                                <td colspan="4" class="text-warning">
+                                    Nenhum jogo encontrado para esse usuário.
                                 </td>
                             </tr>
-                        <% 
-                               }
-                           }
+                        <%
+                        }
                         %>
                     </tbody>
 

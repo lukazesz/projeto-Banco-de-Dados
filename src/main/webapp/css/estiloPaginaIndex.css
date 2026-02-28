@@ -78,6 +78,19 @@ main {
     border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.btn-custom-theme {
+    background: linear-gradient(135deg, #3a0ca3, #4361ee);
+    color: #ffffff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-custom-theme:hover {
+    background: linear-gradient(135deg, #480ca8, #3f37c9);
+    color: #ffffff; /* força texto branco */
+    transform: translateY(-3px);
+}
+
 @media (max-width: 768px) {
     .carousel-wrapper {
         max-width: 90%;

@@ -1,5 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*,bd.model.Usuario" %>
+<%@ page import="java.util.*,bd.model.Categoria" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -39,35 +39,23 @@
                 <div class="card bg-dark text-light shadow-lg p-4">
 
                     <h2 class="text-center mb-4">
-                        <i class="bi bi-plus-circle"></i> Cadastro de Jogo
+                        <i class="bi bi-plus-circle"></i> Escolher Categoria
                     </h2>
 
-                    <form action="cadastrarJogo" method="post">
-
-                        <!-- Nome -->
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome do Jogo</label>
-                            <input type="text" class="form-control" id="nome" name="nome" required>
-                        </div>
-
-                        <!-- Data -->
-                        <div class="mb-3">
-                            <label for="dataCompra" class="form-label">Data da Compra</label>
-                            <input type="date" class="form-control" id="dataCompra" name="dataCompra" required>
-                        </div>
+                    <form action="listarJogosPorCategoria" method="get">
 
                         <!-- Usuário -->
                         <div class="mb-4">
-                            <label for="usuario" class="form-label">Usuário</label>
-                            <select class="form-select" id="usuario" name="idUsuario" required>
+                            <label for="Categoria" class="form-label">Categoria</label>
+                            <select class="form-select" id="idCategoria" name="idCategoria" required>
                                 <option value="">Selecione</option>
                                 <% 
-                                   List<Usuario> usuarios = (List<Usuario>)request.getAttribute("usuarios");
-                                   if(usuarios != null){
-                                       for(Usuario usuario : usuarios) { 
+                                   List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias");
+                                   if(categorias != null){
+                                       for(Categoria categoria : categorias) { 
                                 %>
-                                    <option value="<%=usuario.getId()%>">
-                                        <%=usuario.getNome()%>
+                                    <option value="<%=categoria.getId()%>">
+                                        <%=categoria.getNome()%>
                                     </option>
                                 <% 
                                        }
@@ -80,10 +68,10 @@
                         <div class="d-flex justify-content-between">
 
                             <button type="submit" class="btn btn-custom-theme">
-                                <i class="bi bi-save"></i> Salvar
+                                <i class="bi bi-save"></i> Buscar
                             </button>
 
-                            <a href="listarJogos" class="btn btn-outline-light">
+                            <a href="#" class="btn btn-outline-light">
                                 <i class="bi bi-x-circle"></i> Cancelar
                             </a>
 
